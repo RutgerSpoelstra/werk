@@ -44,5 +44,5 @@ module.exports.help = {
     name: "clear"
 }
 
-bot.login('NDUyODgyNzI1OTI2NjAwNzE0.DfWzcQ.8Lrbn_vzyVXjdYlCu556G54nos0');
+client.login(process.env.BOT_TOKEN);
 
