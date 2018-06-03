@@ -1,10 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-bot.on('ready', () => {
-    console.log('I am ready!');
-});
-
 bot.on('message', (message => {
 
     if(message.content == 'ping') {
@@ -44,5 +40,6 @@ module.exports.help = {
     name: "clear"
 }
 
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
+console.log("ben er klaar voor");
 
