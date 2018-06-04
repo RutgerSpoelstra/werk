@@ -7,8 +7,6 @@ bot.on('ready', () => {
     bot.user.setActivity('bot is online!')
 });
 
-const prefix = "!";
-
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
