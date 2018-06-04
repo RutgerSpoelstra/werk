@@ -1,6 +1,12 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
+bot.on('ready', () => {
+    console.log('status word ingesteld!')
+    bot.user.setStatus('Online')
+    bot.user.setGame('test')
+});
+
 bot.on('message', (message => {
 
     if(message.content == 'ping') {
