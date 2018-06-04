@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 bot.on('ready', () => {
     console.log('status word ingesteld!')
     bot.user.setStatus('Online')
-    bot.user.setGame('test')
+    bot.user.setActivity('bot is online!')
 });
 
 bot.on('message', (message => {
