@@ -4,7 +4,7 @@ const client = new Discord.Client({disableEveryone: true});
 client.on('ready', () => {
   console.log('everything is fine!')
   client.user.setStatus('Online');
-  client.user.setActivity('Everything is aweysome');
+  client.user.setActivity('Everything is aweysome', {type: "WATCHING"});
 })
 
 client.on('message', message => {
