@@ -8,10 +8,7 @@ client.on('ready', () => {
 })
 
 client.on('message', message => {
-  if (message.author.bot) return;
-  if (message.channel.type === 'dm') return;
-
-  if (message.content == '!test') {
+   if (message.content == '!test') {
     message.channel.send('test terug');
   }
   if (message.content == '!kanalen') {
@@ -65,6 +62,36 @@ client.on('message', message => {
   if (message.content == '!hulpkeuze4') {
     message.channel.send("join link: https://discord.gg/hTEvS8j");
   }
+});
+
+client.on('message', message => {
+  if(cmd === `!report`){
+
+    //!report @ned this is the reason
+
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("Couldn't find user.");
+    let rreason = args.join(" ").slice(22);
+
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("Reports")
+    .setColor("#15f153")
+    .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
+    .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+    .addField("Channel", message.channel)
+    .addField("Time", message.createdAt)
+    .addField("Reason", rreason);
+
+    let reportschannel = message.guild.channels.find(`name`, "reports");
+    if(!reportschannel) return message.channel.send("Couldn't find reports channel.");
+
+
+    message.delete().catch(O_o=>{});
+    reportschannel.send(reportEmbed);
+
+    return;
+  }
+
 });
 
 client.login(process.env.BOT_TOKEN);
