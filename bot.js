@@ -68,7 +68,7 @@ client.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
-  if(cmd === `!report`){
+  if(message.content == `!report`){
 
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Couldn't find user.");
@@ -93,7 +93,7 @@ client.on("message", async message => {
     return;
   }
 
-  if(cmd === `!serverinfo`){
+  if(message.content == `!serverinfo`){
 
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
