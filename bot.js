@@ -64,10 +64,11 @@ client.on('message', message => {
   }
 });
 
-client.on('message', message => {
-  if(cmd === `!report`){
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
 
-    //!report @ned this is the reason
+  if(cmd === `!report`){
 
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Couldn't find user.");
@@ -90,6 +91,21 @@ client.on('message', message => {
     reportschannel.send(reportEmbed);
 
     return;
+  }
+
+  if(cmd === `!serverinfo`){
+
+    let sicon = message.guild.iconURL;
+    let serverembed = new Discord.RichEmbed()
+    .setDescription("Server Information")
+    .setColor("#15f153")
+    .setThumbnail(sicon)
+    .addField("Server Name", message.guild.name)
+    .addField("Created On", message.guild.createdAt)
+    .addField("You Joined", message.member.joinedAt)
+    .addField("Total Members", message.guild.memberCount);
+
+    return message.channel.send(serverembed);
   }
 
 });
